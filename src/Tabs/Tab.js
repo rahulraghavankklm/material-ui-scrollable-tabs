@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import EnhancedButton from 'material-ui/internal/EnhancedButton';
 
 function getStyles(props, context) {
@@ -91,7 +92,7 @@ class Tab extends Component {
      * @ignore
      * This property is overriden by the Tabs component.
      */
-    onTouchTap: PropTypes.func,
+    onClick: PropTypes.func,
     /**
      * @ignore
      * Defines if the current tab is selected or not.
@@ -133,9 +134,9 @@ class Tab extends Component {
   }
 
   handleTouchTap = (event) => {
-    if (this.props.onTouchTap) {
-      this.onTouchTapTarget = event.currentTarget;
-      this.props.onTouchTap(this);
+    if (this.props.onClick) {
+      this.onClickTarget = event.currentTarget;
+      this.props.onClick(this);
     }
   };
 
@@ -144,7 +145,7 @@ class Tab extends Component {
       icon,
       index, // eslint-disable-line no-unused-vars
       onActive, // eslint-disable-line no-unused-vars
-      onTouchTap, // eslint-disable-line no-unused-vars
+      onClick, // eslint-disable-line no-unused-vars
       selected, // eslint-disable-line no-unused-vars
       label,
       buttonStyle,
@@ -186,7 +187,7 @@ class Tab extends Component {
         touchRippleColor={rippleColor}
         focusRippleOpacity={rippleOpacity}
         touchRippleOpacity={rippleOpacity}
-        onTouchTap={this.handleTouchTap}
+        onClick={this.handleTouchTap}
         ref={(buttonComponent) => {
           this.buttonComponent = buttonComponent;
         }}
